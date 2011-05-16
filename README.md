@@ -5,7 +5,7 @@ Requirements
 ------------
 
 1. [jQuery 1.5 or later](http://jquery.com/)
-2. [jQuery Templates Plugin](http://github.com/jquery/jquery-tmpl)
+2. [jQuery Templates Plugin (if plugin version one is used)](http://github.com/jquery/jquery-tmpl)
 
 Usage
 -----
