@@ -29,7 +29,7 @@ github.com/markdalgleish/tmpload/blob/master/MIT-LICENSE.txt
                     //The template hasn't been loaded yet
                     return $.Deferred(function(dfd) {
                         $.get(templates[obj]).success(function(d) {
-                            templates[obj] = $.template(d);
+                            templates[obj] = $.template(null, d);
                             dfd.resolve(templates[obj]);
                         }).error(function(d) {
                             dfd.reject(d);
