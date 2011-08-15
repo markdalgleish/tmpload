@@ -8,7 +8,7 @@ github.com/markdalgleish/tmpload/blob/master/MIT-LICENSE.txt
 (function($, undefined) {
     //Template cache
     var templates = {};
-    
+
     $.tmpload = function(obj, url) {
         if (url === undefined) {
             //Declaring template(s)
@@ -27,10 +27,9 @@ github.com/markdalgleish/tmpload/blob/master/MIT-LICENSE.txt
             else if (typeof obj === "string") {
                 if (typeof templates[obj] === "string") {
                     //The template hasn't been loaded yet
-                    return $.Deferred(function(dfd) {
+                    return templates[obj] = $.Deferred(function(dfd) {
                         $.get(templates[obj]).success(function(d) {
-                            templates[obj] = $.template(d);
-                            dfd.resolve(templates[obj]);
+                            dfd.resolve($.template(obj, d));
                         }).error(function(d) {
                             dfd.reject(d);
                         });
