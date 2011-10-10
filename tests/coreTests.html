@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>tmpload Test Suite</title>
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+	<script type="text/javascript" src="../underscore-min.js"></script>
+    <script type="text/javascript" src="../jquery.tmpload-v3.0.js"></script>
+    
+	<link rel="stylesheet" href="qunit/qunit/qunit.css" type="text/css" media="screen">
+	<script type="text/javascript" src="qunit/qunit/qunit.js"></script>
+	<script type="text/javascript" src="coreTests.js"></script>
+</head>
+<body>
+	<h1 id="qunit-header">tmpload Test Suite</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	
+    <div id="qunit-fixture">
+        <script type="text/template" id="local-template">
+            <h1>I'm a local template and I load fast!</h1>
+            <p>My name is <%=name %>.</p>
+        </script>
+        <div id="remote-template">
+<h1>I'm a remote template and I load slower than a local one!</h1>
+<p>My name is <%=name %>.</p>
+</div>
+    </div>
+</body>
+</html>

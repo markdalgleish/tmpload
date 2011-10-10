@@ -83,7 +83,7 @@
             templates[obj] = {
                 url: url,
                 tpl: null
-            }
+            };
         }
     };
     
