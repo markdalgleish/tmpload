@@ -1,0 +1,63 @@
+jQuery tmpload Plugin Demo
+
+Asynchronous Template Loading and Caching for jQuery Templates.
+
+It also has the ability to load local DOM templates and wrap them in a template manager object.
+
+The Underscore templating system was use in the examples above.
+Load local template, compile it with Underscore template manager and insert into the DIVs above
+
+(view page source and scroll to the end of the page to see the template)
+
+        var tplObject = $.tmpload({id: 'local-template', tplWrapper: _.template});
+        $('#div-name1').html(tplObject({name: 'Dumitru'}));
+        $('#div-name2').html(tplObject({name: 'Lucas'}));
+        $('#div-name3').html(tplObject({name: 'Steve'}));
+    
+
+Result
+I'm a local template and I load fast!
+
+My name is Dumitru.
+I'm a local template and I load fast!
+
+My name is Lucas.
+I'm a local template and I load fast!
+
+My name is Steve.
+Load a remote template, compile it with Underscore and insert it into the DIVs above
+
+        $.tmpload({
+            url: 'templates/test-template.html',
+            tplWrapper: _.template,
+            onLoad: function (tplObject) {
+                $('#div-name4').html(tplObject({name: 'Sven'}));
+                $('#div-name5').html(tplObject({name: 'Radu'}));
+                $('#div-name6').html(tplObject({name: 'Razvan'}));
+            }
+        });
+    
+
+Result
+I'm a remote template and I load slower than a local one!
+
+My name is Sven.
+I'm a remote template and I load slower than a local one!
+
+My name is Radu.
+I'm a remote template and I load slower than a local one!
+
+My name is Razvan.
+Options
+
+id (null):
+    Specify an id of a local template - a template that is a part of the DOM. (view page source for example) 
+url (null):
+    Specify the remote URL from where you want to load a template if you don't want to use a local one. 
+cache (true):
+    Cache the templates in the memory for later use. 
+onLoad (null):
+    Use this callback to use the template when loading aremote one. 
+tplWrapper (null):
+    An instance of a template manager object if any. (i.e _.template for Underscore templating system) 
+

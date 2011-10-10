@@ -1,3 +1,20 @@
+/**
+* jQuery Tmpload Plugin v3.0
+*
+* Load and cache asyncronously local and remote jQuery templates
+*
+*
+* @author Dumitru Glavan
+* @link http://dumitruglavan.com
+* @version 3.0 (11-OCT-2011)
+* @requires jQuery v1.6 or later
+*
+* Find source on GitHub: https://github.com/doomhz/tmpload
+*
+* This content is released under the MIT License
+*   http://www.opensource.org/licenses/mit-license.php
+*
+*/
 (function($) {
     
     $.tmpload = function (options) {
