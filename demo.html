@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>jQuery tmpload Plugin Demo - Asynchronous Template Loading and Caching for jQuery Templates</title>
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="underscore-min.js"></script>
+    <script type="text/javascript" src="jquery.tmpload-v3.0.js"></script>
+    
+    <style type="text/css">
+        div {
+            font-size: 12px;
+        }
+        div h1 {
+            font-size: 14px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>jQuery tmpload Plugin Demo</h1>
+    
+    <p>Asynchronous template loading and caching for jQuery templates.</p>
+    <p>It also has the ability to load local DOM templates and wrap them in a template manager object.</p>
+    <p>The <a href="http://documentcloud.github.com/underscore/" target="_blank">Underscore templating system</a> was use in the examples above.</p>
+    
+    <h2>Load local template, compile it with Underscore template manager and insert into the DIVs above</h2>
+    
+    <p>(view page source and scroll to the end of the page to see the template)</p>
+    
+    <pre>
+        var tplObject = $.tmpload({id: 'local-template', tplWrapper: _.template});
+        $('#div-name1').html(tplObject({name: 'Dumitru'}));
+        $('#div-name2').html(tplObject({name: 'Lucas'}));
+        $('#div-name3').html(tplObject({name: 'Steve'}));
+    </pre>
+    
+    <h3>Result</h3>
+    
+    <div id="div-name1"></div>
+    <div id="div-name2"></div>
+    <div id="div-name3"></div>
+    
+    <h2>Load a remote template, compile it with Underscore and insert it into the DIVs above</h2>
+    
+    <pre>
+        $.tmpload({
+            url: 'templates/test-template.html',
+            tplWrapper: _.template,
+            onLoad: function (tplObject) {
+                $('#div-name4').html(tplObject({name: 'Sven'}));
+                $('#div-name5').html(tplObject({name: 'Radu'}));
+                $('#div-name6').html(tplObject({name: 'Razvan'}));
+            }
+        });
+    </pre>
+    
+    <h3>Result</h3>
+    
+    <div id="div-name4"></div>
+    <div id="div-name5"></div>
+    <div id="div-name6"></div>
+    
+    
+    <h2>Options</h2>
+
+	<dl>
+		<dt><b>id</b> (null):</dt>
+		<dd>
+			Specify an id of a local template - a template that is a part of the DOM. (view page source for example)
+		</dd>
+		<dt><b>url</b> (null):</dt>
+		<dd>
+			Specify the remote URL from where you want to load a template if you don't want to use a local one.
+		</dd>
+        <dt><b>cache</b> (true):</dt>
+    	<dd>
+			Cache the templates in the memory for later use.
+		</dd>
+        <dt><b>onLoad</b> (null):</dt>
+        <dd>
+			Use this callback to use the template when loading aremote one.
+		</dd>
+        <dt><b>tplWrapper</b> (null):</dt>
+        <dd>
+			An instance of a template manager object if any. (i.e _.template for <a href="http://documentcloud.github.com/underscore/" target="_blank">Underscore templating system</a>)
+		</dd>
+	</dl>
+    
+
+    <script type="text/template" id="local-template">
+        <h1>I'm a local template and I load fast!</h1>
+        <p>My name is <%=name %>.</p>
+    </script>
+    
+    <script type="text/javascript">
+        // Load a local template
+        var tplObject = $.tmpload({id: 'local-template', tplWrapper: _.template});
+        $('#div-name1').html(tplObject({name: 'Dumitru'}));
+        $('#div-name2').html(tplObject({name: 'Lucas'}));
+        $('#div-name3').html(tplObject({name: 'Steve'}));
+        
+        // Load a remote template
+        $.tmpload({
+            url: 'templates/test-template.html',
+            tplWrapper: _.template,
+            onLoad: function (tplObject) {
+                $('#div-name4').html(tplObject({name: 'Sven'}));
+                $('#div-name5').html(tplObject({name: 'Radu'}));
+                $('#div-name6').html(tplObject({name: 'Razvan'}));
+            }
+        });
+        
+    </script>
+    
+</body>
+</html>
